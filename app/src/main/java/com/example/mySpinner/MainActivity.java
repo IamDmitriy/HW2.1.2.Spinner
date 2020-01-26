@@ -51,10 +51,10 @@ public class MainActivity extends AppCompatActivity {
             houseNumbers[i] = i + 1;
         }
 
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this,
+        ArrayAdapter<Integer> houseNumbersAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, houseNumbers);
-
-        mHouseNumberSpinner.setAdapter(adapter);
+        houseNumbersAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mHouseNumberSpinner.setAdapter(houseNumbersAdapter);
     }
 
     private void initSpinnerCountries() {
@@ -75,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 
     private void initSpinnerCities(String country) {
@@ -104,9 +106,9 @@ public class MainActivity extends AppCompatActivity {
     public void showToast() {
         Toast.makeText(MainActivity.this
                 , mCountriesSpinner.getSelectedItem().toString()
-                        + " "
+                        + " - "
                         + mCitiesSpinner.getSelectedItem().toString()
-                        + " "
+                        + " - "
                         + mHouseNumberSpinner.getSelectedItem().toString()
                 , Toast.LENGTH_LONG)
                 .show();
